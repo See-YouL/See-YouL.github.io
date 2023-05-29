@@ -21,30 +21,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="记录生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="过隙影">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="填空 嵌入式系统概念填空  嵌入式系统是以应用系统为中心，以计算机为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。 ARM处理器是ARM公司设计的基于RISC架构的32位高性能微处理器，一般采用哈佛总线结构，具有高速指令缓存和数据缓存，指令长度固定且多级流水线执行。  工作频率填空  Cortex-M3内核CPU通过总线阵列和高性能总线（AHB）以及AH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARM嵌入式复习笔记">
+<meta property="og:url" content="http://example.com/2023/05/29/ARM%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="过隙影">
-<meta property="og:description" content="记录生活">
+<meta property="og:description" content="填空 嵌入式系统概念填空  嵌入式系统是以应用系统为中心，以计算机为基础，软硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。 ARM处理器是ARM公司设计的基于RISC架构的32位高性能微处理器，一般采用哈佛总线结构，具有高速指令缓存和数据缓存，指令长度固定且多级流水线执行。  工作频率填空  Cortex-M3内核CPU通过总线阵列和高性能总线（AHB）以及AH">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-29T03:37:03.000Z">
+<meta property="article:modified_time" content="2023-05-29T04:20:04.747Z">
 <meta property="article:author" content="Eric Ellis">
+<meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/05/29/ARM%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>过隙影</title>
+  <title>ARM嵌入式复习笔记 | 过隙影</title>
   
 
 
@@ -148,9 +151,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -166,10 +170,9 @@
       <meta itemprop="name" content="过隙影">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/05/29/ARM%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">ARM嵌入式复习笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ARM嵌入式复习笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -193,7 +196,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="填空">填空</h2>
+        <h2 id="填空">填空</h2>
 <h3 id="嵌入式系统概念填空">嵌入式系统概念填空</h3>
 <ol>
 <li>嵌入式系统是以<strong>应用系统</strong>为中心，以<strong>计算机为基础</strong>，<strong>软硬件可裁剪</strong>，<s>适应应用系统对功能、可靠性、成本、体积、功耗严格要求</s>的<strong>专用</strong>计算机系统。</li>
@@ -679,92 +682,33 @@
 <p>分析</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据程序的执行逻辑，任务task1、task2、task3依次执行，每个任务都会先清屏，然后在LCD上显示对应的任务名，并通过OSTimeDly()函数延迟一定时间。因此，首次执行时LCD上会显示&quot;task1&quot;，然后延迟200个时钟节拍，接着显示&quot;task2&quot;，再延迟300个时钟节拍，最后显示&quot;task3&quot;，再延迟500个时钟节拍。之后，任务会不断循环执行，按照相同的顺序在LCD上显示任务名，并延迟指定的时间。</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/hello-world/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Eric Ellis">
-      <meta itemprop="description" content="记录生活">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="过隙影">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/05/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-05-28 21:42:21" itemprop="dateCreated datePublished" datetime="2023-05-28T21:42:21+08:00">2023-05-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a new post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to remote sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/28/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -817,6 +761,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.</span> <span class="nav-text">填空</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.1.</span> <span class="nav-text">嵌入式系统概念填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E9%A2%91%E7%8E%87%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.2.</span> <span class="nav-text">工作频率填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%92%9F%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.3.</span> <span class="nav-text">时钟填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.4.</span> <span class="nav-text">存储器填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gpio%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.5.</span> <span class="nav-text">GPIO填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.6.</span> <span class="nav-text">中断填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adc%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.7.</span> <span class="nav-text">ADC填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.8.</span> <span class="nav-text">操作系统填空</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">简答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E7%AE%80%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">嵌入式系统概念简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E6%8A%80%E6%9C%AF%E8%A7%92%E5%BA%A6%E6%9D%A5%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%9F8051%E5%8D%95%E7%89%87%E6%9C%BA%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E5%B1%9E%E4%BA%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%9F"><span class="nav-number">2.1.1.</span> <span class="nav-text">从技术角度来说什么是嵌入式系统？8051单片机应用系统是否属于嵌入式系统？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E2%80%9C%E5%AE%9E%E6%97%B6%E6%80%A7%E2%80%9D%E6%8C%87%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.1.2.</span> <span class="nav-text">嵌入式实时操作系统中的“实时性”指的是什么？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%92%9F%E7%AE%80%E7%AD%94"><span class="nav-number">2.2.</span> <span class="nav-text">时钟简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%97%B6%E9%92%9F%E6%BA%90%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F%E5%90%84%E6%97%B6%E9%92%9F%E6%BA%90%E7%9A%84%E9%A2%91%E7%8E%87%E8%8C%83%E5%9B%B4%E5%88%86%E5%88%AB%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">STM32F103微控制器的工作时钟源有哪几种？各时钟源的频率范围分别是多少？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8stm32f103%E5%86%85%E9%83%A8%E7%9A%84%E6%97%B6%E9%92%9F%E6%A0%91%E4%B8%AD%EF%BC%8C%E9%94%81%E7%9B%B8%E7%8E%AFpll%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E9%80%94%EF%BC%9F"><span class="nav-number">2.2.2.</span> <span class="nav-text">在STM32F103内部的时钟树中，锁相环PLL有什么用途？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%A0%81%EF%BC%88startup_stm32f10x_hds%EF%BC%89%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.3.</span> <span class="nav-text">嵌入式系统中的启动代码（startup_stm32f10x_hd.s）程序的功能是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B1%E5%93%AA%E5%87%A0%E9%83%A8%E5%88%86%E6%9E%84%E6%88%90%EF%BC%9F"><span class="nav-number">2.2.4.</span> <span class="nav-text">STM32F103微控制器的最小系统由哪几部分构成？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%EF%BC%9F%E5%A6%82%E4%BD%95%E6%9D%A5%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.2.5.</span> <span class="nav-text">STM32F103微控制器有哪几种启动模式？如何来配置系统启动模式？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%80%E7%AD%94"><span class="nav-number">2.3.</span> <span class="nav-text">存储器简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%98%E5%82%A8%E5%99%A8%E9%87%8D%E6%98%A0%E5%B0%84%EF%BC%9Fstm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E5%93%AA%E4%BA%9B%E5%AD%98%E5%82%A8%E5%8C%BA%E5%9F%9F%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%82%A8%E5%99%A8%E9%87%8D%E6%98%A0%E5%B0%84%EF%BC%9F"><span class="nav-number">2.3.1.</span> <span class="nav-text">什么是存储器重映射？STM32F103微控制器的哪些存储区域需要进行存储器重映射？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E7%AE%80%E7%AD%94"><span class="nav-number">2.4.</span> <span class="nav-text">中断简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E5%BC%82%E5%B8%B8%E5%92%8C%E4%B8%AD%E6%96%AD%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E4%BC%98%E5%85%88%E7%BA%A7%E6%9C%80%E9%AB%98%E7%9A%84%E6%98%AF%E5%93%AA%E4%B8%AA%E5%BC%82%E5%B8%B8/%E4%B8%AD%E6%96%AD%EF%BC%9F"><span class="nav-number">2.4.1.</span> <span class="nav-text">STM32F103微控制器的异常和中断有什么区别？优先级最高的是哪个异常&#x2F;中断？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gpio%E7%AE%80%E7%AD%94"><span class="nav-number">2.5.</span> <span class="nav-text">GPIO简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84gpio%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%EF%BC%9Fgpio%E4%BD%9C%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5%E6%97%B6%E5%BA%94%E9%80%89%E6%8B%A9%E5%93%AA%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.5.1.</span> <span class="nav-text">STM32F103微控制器的GPIO有哪几种工作模式？GPIO作按键输入时应选择哪种工作模式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E7%94%A8%E7%AB%AF%E5%8F%A3%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8(odr-)%EF%BC%8C%E7%BC%96%E5%86%99%E6%8E%A7%E5%88%B6gpioc%E5%8F%A3%E7%9A%84pc3-pc5%E5%BC%95%E8%84%9A%E8%BE%93%E5%87%BA%E9%AB%98%E7%94%B5%E5%B9%B3%EF%BC%8C%E5%85%B6%E5%AE%83%E5%BC%95%E8%84%9A%E8%BE%93%E5%87%BA%E4%BD%8E%E7%94%B5%E5%B9%B3%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.5.2.</span> <span class="nav-text">请用端口输出数据寄存器(ODR )，编写控制GPIOC口的PC3-PC5引脚输出高电平，其它引脚输出低电平的语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%BD%AE%E4%BD%8D/%E6%B8%85%E9%9B%B6%E5%AF%84%E5%AD%98%E5%99%A8(bsrr-)%EF%BC%8C%E7%BC%96%E5%86%99%E6%8E%A7%E5%88%B6gpiob%E5%8F%A3%E7%9A%84pb0-pb5%E5%BC%95%E8%84%9A%E8%BE%93%E5%87%BA%E9%AB%98%E7%94%B5%E5%B9%B3%EF%BC%8C%E5%85%B6%E5%AE%83%E5%BC%95%E8%84%9A%E4%BF%9D%E6%8C%81%E4%B8%8D%E5%8F%98%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.5.3.</span> <span class="nav-text">请用端口置位&#x2F;清零寄存器(BSRR )，编写控制GPIOB口的PB0-PB5引脚输出高电平，其它引脚保持不变的语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%B8%85%E9%9B%B6%E5%AF%84%E5%AD%98%E5%99%A8(brr-)%EF%BC%8C%E7%BC%96%E5%86%99%E6%8E%A7%E5%88%B6gpiod%E5%8F%A3%E7%9A%84pd0-pd3%E5%BC%95%E8%84%9A%E8%BE%93%E5%87%BA%E4%BD%8E%E7%94%B5%E5%B9%B3%EF%BC%8C%E5%85%B6%E5%AE%83%E5%BC%95%E8%84%9A%E4%BF%9D%E6%8C%81%E4%B8%8D%E5%8F%98%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.5.4.</span> <span class="nav-text">请用端口清零寄存器(BRR )，编写控制GPIOD口的PD0-PD3引脚输出低电平，其它引脚保持不变的语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84gpio%E7%9B%B8%E5%85%B3%E5%90%84%E4%B8%AA%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%AB%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-number">2.5.5.</span> <span class="nav-text">简述STM32F103微控制器的GPIO相关各个寄存器的含义和作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90stm32%E5%AF%84%E5%AD%98%E5%99%A8%E7%BC%96%E7%A8%8B%E5%92%8C%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E4%B8%A4%E7%A7%8D%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">2.5.6.</span> <span class="nav-text">对比分析STM32寄存器编程和库函数编程两种编程方式的特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD"><span class="nav-number">2.6.</span> <span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0stm32f103%E5%B5%8C%E5%A5%97%E5%90%91%E9%87%8F%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88nvic%EF%BC%89%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E7%89%B9%E7%82%B9"><span class="nav-number">2.6.1.</span> <span class="nav-text">简述STM32F103嵌套向量中断控制器（NVIC）的作用和特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0stm32f103%E7%9A%84nvic%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%86%E7%BB%84%E6%96%B9%E6%B3%95%E5%92%8C%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%92%E5%88%86"><span class="nav-number">2.6.2.</span> <span class="nav-text">简述STM32F103的NVIC中断优先级分组方法和优先级划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0stm32f103%E7%9A%84nvic%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%86%E7%BB%84%E4%B8%AD%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E5%92%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.6.3.</span> <span class="nav-text">简述STM32F103的NVIC中断优先级分组中抢占优先级和响应优先级的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E5%AE%9A%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7%E7%BB%84%E4%B8%BA2%EF%BC%8C%E7%84%B6%E5%90%8E%E8%AE%BE%E7%BD%AE%EF%BC%9A%E4%B8%AD%E6%96%AD3%EF%BC%88-rtc%20%E4%B8%AD%E6%96%AD%EF%BC%89%E7%9A%84%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA2%EF%BC%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA1%EF%BC%9B%E4%B8%AD%E6%96%AD6%EF%BC%88%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD0%EF%BC%89%E7%9A%84%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA3%EF%BC%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA0%EF%BC%9B%E4%B8%AD%E6%96%AD7%EF%BC%88%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD1%EF%BC%89%E7%9A%84%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA2%EF%BC%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA0%E3%80%82%E5%86%99%E5%87%BA%E8%BF%993%E4%B8%AA%E4%B8%AD%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E9%A1%BA%E5%BA%8F%E3%80%82"><span class="nav-number">2.6.4.</span> <span class="nav-text">假定设置中断优先级组为2，然后设置：中断3（ RTC 中断）的抢占优先级为2，响应优先级为1；中断6（外部中断0）的抢占优先级为3，响应优先级为0；中断7（外部中断1）的抢占优先级为2，响应优先级为0。写出这3个中断的优先级顺序。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8/%E8%AE%A1%E6%95%B0%E5%99%A8%E7%AE%80%E7%AD%94"><span class="nav-number">2.7.</span> <span class="nav-text">定时器&#x2F;计数器简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%84%E5%AE%9A%E6%97%B6%E5%99%A8%E5%88%86%E4%B8%BA%E5%93%AA3%E7%A7%8D?"><span class="nav-number">2.7.1.</span> <span class="nav-text">STM32F103微控制器的常规定时器分为哪3种?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E9%AB%98%E7%BA%A7%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E9%80%9A%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E5%8A%9F%E8%83%BD%E4%B8%BB%E8%A6%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.7.2.</span> <span class="nav-text">STM32F103微控制器的高级定时器和通用定时器的功能主要有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stm32f103%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E6%9C%89%E5%93%AA3%E7%A7%8D?"><span class="nav-number">2.7.3.</span> <span class="nav-text">STM32F103定时器的计数器模式有哪3种?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adc%E7%AE%80%E7%AD%94"><span class="nav-number">2.8.</span> <span class="nav-text">ADC简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0stm32f103%E7%9A%84adc%E8%A7%84%E5%88%99%E9%80%9A%E9%81%93%E7%BB%84%E5%92%8C%E6%B3%A8%E5%85%A5%E9%80%9A%E9%81%93%E7%BB%84%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.8.1.</span> <span class="nav-text">简述STM32F103的ADC规则通道组和注入通道组之间的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2%E5%8F%A3%E7%AE%80%E7%AD%94"><span class="nav-number">2.9.</span> <span class="nav-text">串口简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%ADstm32f103%E7%9A%84%E4%B8%B2%E5%8F%A3%E6%98%AF%E5%90%A6%E5%AE%8C%E6%88%90%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6"><span class="nav-number">2.9.1.</span> <span class="nav-text">简述如何判断STM32F103的串口是否完成数据发送和接收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%88%86%E4%B8%BA%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1%E5%92%8C%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%EF%BC%8C%E7%AE%80%E8%BF%B0%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1%E5%92%8C%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.9.2.</span> <span class="nav-text">串行通信分为异步通信和同步通信，简述异步通信和同步通信的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AE%80%E7%AD%94"><span class="nav-number">2.10.</span> <span class="nav-text">操作系统简答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#uc/os-ii%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E4%BA%92%E6%96%A5%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%9C%A8%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.10.1.</span> <span class="nav-text">uC&#x2F;OS-II操作系统中，信号量和互斥信号量在功能上的主要区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uc/os-ii%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E6%B6%88%E6%81%AF%E9%82%AE%E7%AE%B1%E5%9C%A8%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.10.2.</span> <span class="nav-text">uC&#x2F;OS-II操作系统中，信号量和消息邮箱在功能上的主要区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uc/os-ii%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E6%B6%88%E6%81%AF%E9%82%AE%E7%AE%B1%E5%92%8C%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%9C%A8%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.10.3.</span> <span class="nav-text">uC&#x2F;OS-II操作系统中，消息邮箱和消息队列在功能上的主要区别是什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gpio%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.1.</span> <span class="nav-text">GPIO程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8gpio%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0pb5%E6%8E%A7%E5%88%B6led%E7%81%AF%E5%91%A8%E6%9C%9F%E9%97%AA%E7%83%81%EF%BC%8C%E9%97%AA%E7%83%81%E5%91%A8%E6%9C%9F%E7%BA%A6%E4%B8%BA1s%EF%BC%8C%E9%87%87%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%BB%B6%E6%97%B6%E6%96%B9%E6%B3%95%E3%80%82%E7%A8%8B%E5%BA%8F%E5%BA%94%E5%8C%85%E6%8B%ACgpio%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%BB%E5%87%BD%E6%95%B0main%EF%BC%88%EF%BC%89%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">采用库函数编写通用GPIO控制程序，实现PB5控制LED灯周期闪烁，闪烁周期约为1s，采用软件延时方法。程序应包括GPIO初始化函数和主函数main（）代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8gpio%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0pb5%E5%92%8Cpe5%E6%8E%A7%E5%88%B6%E7%9A%842%E4%B8%AAled%E7%81%AF%E4%BA%A4%E6%9B%BF%E9%97%AA%E7%83%81%EF%BC%8C%E9%97%AA%E7%83%81%E5%91%A8%E6%9C%9F%E7%BA%A6%E4%B8%BA1s%E3%80%82%E7%A8%8B%E5%BA%8F%E5%BA%94%E5%8C%85%E6%8B%ACgpio%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%BB%E5%87%BD%E6%95%B0main%EF%BC%88%EF%BC%89%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.2.</span> <span class="nav-text">采用库函数编写通用GPIO控制程序，实现PB5和PE5控制的2个LED灯交替闪烁，闪烁周期约为1s。程序应包括GPIO初始化函数和主函数main（）代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8gpio%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B08%E4%B8%AAled%E5%BE%AA%E7%8E%AF%E4%BE%9D%E6%AC%A1%E7%82%B9%E4%BA%AE%E5%8A%9F%E8%83%BD%EF%BC%8C8%E4%B8%AAled%E7%94%B1pe0~pe7%E6%8E%A7%E5%88%B6%EF%BC%8C%E4%BD%8E%E7%94%B5%E5%B9%B3%E7%82%B9%E4%BA%AE%E3%80%82%E7%A8%8B%E5%BA%8F%E5%BA%94%E5%8C%85%E6%8B%ACgpio%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%BB%E5%87%BD%E6%95%B0main%EF%BC%88%EF%BC%89%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.3.</span> <span class="nav-text">采用库函数编写通用GPIO控制程序，实现8个LED循环依次点亮功能，8个LED由PE0~PE7控制，低电平点亮。程序应包括GPIO初始化函数和主函数main（）代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8gpio%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0pc%E5%8F%A3%EF%BC%88pc0~pc7%EF%BC%89%E6%8E%A7%E5%88%B61%E4%BD%8D%E5%85%B1%E9%98%B3%E6%9E%81%E6%95%B0%E7%A0%81%E7%AE%A1%E5%BE%AA%E7%8E%AF%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%970~9%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%AF%8F%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%BE%E7%A4%BA%E5%81%9C%E7%95%99%E6%97%B6%E9%97%B4%E7%BA%A6%E4%B8%BA1s%E3%80%82%E7%A8%8B%E5%BA%8F%E5%BA%94%E5%8C%85%E6%8B%ACgpio%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%BB%E5%87%BD%E6%95%B0main%EF%BC%88%EF%BC%89%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.4.</span> <span class="nav-text">采用库函数编写通用GPIO控制程序，实现PC口（PC0~PC7）控制1位共阳极数码管循环显示数字0~9的功能，每个数字显示停留时间约为1s。程序应包括GPIO初始化函数和主函数main（）代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exti%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.2.</span> <span class="nav-text">EXTI程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8C%89%E9%94%AE%E7%9A%84%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%BE%93%E5%85%A5%EF%BC%88pe2%EF%BC%89%E7%9A%84%E5%93%8D%E5%BA%94%EF%BC%8C%E7%94%A8led%E7%81%AF%EF%BC%88pc5%EF%BC%89%E7%8A%B6%E6%80%81%E5%8F%8D%E6%98%A0%E6%8C%89%E9%94%AE%E7%9A%84%E6%8C%89%E4%B8%8B%EF%BC%8C%E6%AF%8F%E6%AC%A1%E6%8C%89%E9%94%AE%E6%8C%89%E4%B8%8B%E6%97%B6%EF%BC%88%E4%B8%8B%E9%99%8D%E6%B2%BF%E4%B8%AD%E6%96%AD%EF%BC%89%E5%B0%86led%E7%81%AF%E7%8A%B6%E6%80%81%E5%8F%96%E5%8F%8D%E3%80%82%EF%BC%88%E5%86%99%E5%87%BApe2%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%A3%E7%A0%81%E5%92%8C%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">采用库函数编写程序，实现对按键的外部中断输入（PE2）的响应，用LED灯（PC5）状态反映按键的按下，每次按键按下时（下降沿中断）将LED灯状态取反。（写出PE2外部中断初始化代码和外部中断服务函数的代码）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8C%89%E9%94%AE%E7%9A%84%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%BE%93%E5%85%A5%EF%BC%88pe4%EF%BC%89%E7%9A%84%E5%93%8D%E5%BA%94%EF%BC%8C%E7%94%A8led%E7%81%AF%EF%BC%88pc5%EF%BC%89%E7%8A%B6%E6%80%81%E5%8F%8D%E6%98%A0%E6%8C%89%E9%94%AE%E7%9A%84%E6%8C%89%E4%B8%8B%EF%BC%8C%E6%AF%8F%E6%AC%A1%E6%8C%89%E9%94%AE%E6%8C%89%E4%B8%8B%E6%97%B6%EF%BC%88%E4%B8%8A%E5%8D%87%E6%B2%BF%E4%B8%AD%E6%96%AD%EF%BC%89%E5%B0%86led%E7%81%AF%E7%8A%B6%E6%80%81%E5%8F%96%E5%8F%8D%E3%80%82%EF%BC%88%E5%86%99%E5%87%BApe4%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%A3%E7%A0%81%E5%92%8C%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="nav-number">3.2.2.</span> <span class="nav-text">采用库函数编写程序，实现对按键的外部中断输入（PE4）的响应，用LED灯（PC5）状态反映按键的按下，每次按键按下时（上升沿中断）将LED灯状态取反。（写出PE4外部中断初始化代码和外部中断服务函数的代码）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-:%20(bitaction)(1%20-%20gpio_readoutputdatabit(gpioc,%20gpio_pin_5)%E6%98%AF%E4%BB%80%E4%B9%88%E5%90%AB%E4%B9%89"><span class="nav-number">3.2.3.</span> <span class="nav-text">补充 : (BitAction)(1 - GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_5)是什么含义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tim"><span class="nav-number">3.3.</span> <span class="nav-text">TIM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8tim2%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8tim2%E7%9A%84%E9%A2%84%E5%88%86%E9%A2%91%E5%80%BC%E4%B8%BA7199%EF%BC%8C%E5%AE%9A%E6%97%B6%E6%97%B6%E9%97%B4%E4%B8%BA10ms%EF%BC%8C%E5%8A%A0%E8%AE%A1%E6%95%B0%E6%A8%A1%E5%BC%8F%EF%BC%8C%E4%BD%BF%E8%83%BDtim2%E7%9A%84%E5%88%B7%E6%96%B0%E4%B8%AD%E6%96%AD%EF%BC%8C%E4%B8%AD%E6%96%AD%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA2%EF%BC%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA3"><span class="nav-number">3.3.1.</span> <span class="nav-text">采用库函数编写通用定时器TIM2的初始化程序，设置定时器TIM2的预分频值为7199，定时时间为10ms，加计数模式，使能TIM2的刷新中断，中断抢占优先级为2，响应优先级为3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E9%80%9A%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8tim3%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8tim3%E7%9A%84%E9%A2%84%E5%88%86%E9%A2%91%E5%80%BC%E4%B8%BA7199%EF%BC%8C%E5%AE%9A%E6%97%B6%E6%97%B6%E9%97%B4%E4%B8%BA100ms%EF%BC%8C%E5%8A%A0%E8%AE%A1%E6%95%B0%E6%A8%A1%E5%BC%8F%EF%BC%8C%E4%BD%BF%E8%83%BDtim3%E7%9A%84%E5%88%B7%E6%96%B0%E4%B8%AD%E6%96%AD%EF%BC%8C%E4%B8%AD%E6%96%AD%E6%8A%A2%E5%8D%A0%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA1%EF%BC%8C%E5%93%8D%E5%BA%94%E4%BC%98%E5%85%88%E7%BA%A7%E4%B8%BA2%E3%80%82"><span class="nav-number">3.3.2.</span> <span class="nav-text">采用库函数编写通用定时器TIM3的初始化程序，设置定时器TIM3的预分频值为7199，定时时间为100ms，加计数模式，使能TIM3的刷新中断，中断抢占优先级为1，响应优先级为2。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-:%20%E8%AE%A1%E7%AE%97tim_timebasestructuretim_period(%E8%AE%A1%E6%95%B0%E5%99%A8%E8%87%AA%E5%8A%A8%E9%87%8D%E8%A3%85%E8%BD%BD%E5%80%BC)"><span class="nav-number">3.3.3.</span> <span class="nav-text">补充 : 计算TIM_TimeBaseStructure.TIM_Period(计数器自动重装载值)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E9%A2%98"><span class="nav-number">3.4.</span> <span class="nav-text">综合题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8C%89%E9%94%AE%E7%9A%84%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%BE%93%E5%85%A5%EF%BC%88pc3%EF%BC%89%E7%9A%84%E5%93%8D%E5%BA%94%EF%BC%8C%E6%AF%8F%E6%AC%A1%E6%8C%89%E9%94%AE%E6%8C%89%E4%B8%8B%E6%97%B6%E8%AE%B0%E5%BD%95%E6%8C%89%E4%B8%8B%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%8C%E5%B9%B6%E9%80%9A%E8%BF%87%E4%B8%B2%E5%8F%A32%E5%B0%86%E6%8C%89%E9%94%AE%E6%AC%A1%E6%95%B0%E4%BC%A0%E9%80%81%E7%BB%99%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%8A%A9%E6%89%8B%E6%98%BE%E7%A4%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">采用库函数编写程序，实现对按键的外部中断输入（PC3）的响应，每次按键按下时记录按下的次数，并通过串口2将按键次数传送给上位机的串口助手显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8C%89%E9%94%AE%E7%9A%84%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%BE%93%E5%85%A5%EF%BC%88pe2%EF%BC%89%E7%9A%84%E5%93%8D%E5%BA%94%EF%BC%8C%E6%AF%8F%E6%AC%A1%E6%8C%89%E9%94%AE%E6%8C%89%E4%B8%8B%E6%97%B6%E8%AE%B0%E5%BD%95%E6%8C%89%E4%B8%8B%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%8C%E5%B9%B6%E9%80%9A%E8%BF%87%E4%B8%B2%E5%8F%A31%E5%B0%86%E6%8C%89%E9%94%AE%E6%AC%A1%E6%95%B0%E4%BC%A0%E9%80%81%E7%BB%99%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%8A%A9%E6%89%8B%E6%98%BE%E7%A4%BA"><span class="nav-number">3.4.2.</span> <span class="nav-text">采用库函数编写程序，实现对按键的外部中断输入（PE2）的响应，每次按键按下时记录按下的次数，并通过串口1将按键次数传送给上位机的串口助手显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E5%99%A8tim2%E5%AE%9A%E6%97%B61s%EF%BC%8C%E6%AF%8F%E6%AC%A1%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD%E6%97%B6%EF%BC%8C%E9%80%9A%E8%BF%87%E4%B8%B2%E5%8F%A31%E5%B0%86%E4%B8%AD%E6%96%AD%E6%AC%A1%E6%95%B0%E8%AE%A1%E6%95%B0%E5%80%BC%EF%BC%880~99%EF%BC%89%E5%8F%91%E9%80%81%E7%BB%99%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%8A%A9%E6%89%8B%E6%98%BE%E7%A4%BA"><span class="nav-number">3.4.3.</span> <span class="nav-text">采用库函数编写程序，实现定时器TIM2定时1s，每次定时中断时，通过串口1将中断次数计数值（0~99）发送给上位机的串口助手显示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">程序分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">题一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E4%BA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">题二</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
