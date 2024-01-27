@@ -179,7 +179,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-01-27 22:02:55 / 修改时间：22:20:31" itemprop="dateCreated datePublished" datetime="2024-01-27T22:02:55+08:00">2024-01-27</time>
+              <time title="创建时间：2024-01-27 22:02:55 / 修改时间：22:29:41" itemprop="dateCreated datePublished" datetime="2024-01-27T22:02:55+08:00">2024-01-27</time>
             </span>
 
           
@@ -199,43 +199,10 @@
 <p>复制一份库到主工作区的根目录下, 设置头文件引用路径到该库中即可使得Vscode实现对库中函数名和变量名的识别和跳转</p>
 <h3 id="vscode工作区文件树">Vscode工作区文件树</h3>
 <p>原工作区结构如下图</p>
-<ul>
-<li>工作区</li>
-<li>工程文件夹</li>
-<li>Doc(略)</li>
-<li>Libraries</li>
-<li>CMSIS<br>
-- startup<br>
-- stm32f10x.h等内核头文件</li>
-<li>STM32F10x_StdPeriph_Driver<br>
-- inc(设外头文件)<br>
-- src</li>
-<li>Project(略)</li>
-<li>User(略)</li>
-</ul>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├─.vscode</span><br><span class="line">├─工程n(中其一个工程)</span><br><span class="line">│  ├─Doc</span><br><span class="line">│  ├─Libraries</span><br><span class="line">│  │  ├─CMSIS</span><br><span class="line">│  │  │  └─startup</span><br><span class="line">│  │  └─STM32F10x<span class="built_in">_</span>StdPeriph<span class="built_in">_</span>Driver</span><br><span class="line">│  │      ├─inc</span><br><span class="line">│  │      └─src</span><br><span class="line">│  ├─Project</span><br><span class="line">│  │  ├─.vscode</span><br><span class="line">│  │  ├─DebugConfig</span><br><span class="line">│  │  ├─Listings</span><br><span class="line">│  │  └─Objects</span><br><span class="line">│  └─User</span><br><span class="line">│      ├─key</span><br><span class="line">│      └─led</span><br></pre></td></tr></table></figure>
 <h3 id="修改vscode工作区结构">修改Vscode工作区结构</h3>
 <p><strong>复制Libraries文件夹到工作区根目录下, 现工作区如下</strong></p>
-<ul>
-<li>工作区</li>
-<li>工程文件夹</li>
-<li>Doc(略)</li>
-<li>Libraries</li>
-<li>CMSIS<br>
-- startup<br>
-- stm32f10x.h等内核头文件</li>
-<li>STM32F10x_StdPeriph_Driver<br>
-- inc(设外头文件)<br>
-- src</li>
-<li>Project(略)</li>
-<li>User(略)</li>
-<li>Libraries</li>
-<li>CMSIS</li>
-<li>startup</li>
-<li>stm32f10x.h等内核库文件</li>
-<li>STM32F10x_StdPeriph_Driver</li>
-<li>inc(外设头文件)</li>
-<li>src</li>
-</ul>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├─.vscode</span><br><span class="line">├─工程n(中其一个工程)</span><br><span class="line">│  ├─Doc</span><br><span class="line">│  ├─Libraries</span><br><span class="line">│  │  ├─CMSIS</span><br><span class="line">│  │  │  └─startup</span><br><span class="line">│  │  └─STM32F10x<span class="built_in">_</span>StdPeriph<span class="built_in">_</span>Driver</span><br><span class="line">│  │      ├─inc</span><br><span class="line">│  │      └─src</span><br><span class="line">│  ├─Project</span><br><span class="line">│  │  ├─.vscode</span><br><span class="line">│  │  ├─DebugConfig</span><br><span class="line">│  │  ├─Listings</span><br><span class="line">│  │  └─Objects</span><br><span class="line">│  └─User</span><br><span class="line">│      ├─key</span><br><span class="line">│      └─led</span><br><span class="line">├─Libraries</span><br><span class="line">│  ├─CMSIS</span><br><span class="line">│  │  └─startup</span><br><span class="line">│  └─STM32F10x<span class="built_in">_</span>StdPeriph<span class="built_in">_</span>Driver</span><br><span class="line">│      ├─inc</span><br><span class="line">│      └─src</span><br></pre></td></tr></table></figure>
 <h2 id="在vscode中进行配置">在Vscode中进行配置</h2>
 <p>在vscode中按Ctrl+Shift+P 输入configuration, 如图选择C/C++编程配置(json)</p>
 <p><img data-src="https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401272209160.png" alt="Vscode配置"></p>
