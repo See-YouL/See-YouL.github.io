@@ -154,6 +154,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/29/Doxygen%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Eric Ellis">
+      <meta itemprop="description" content="记录生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="过隙影">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/29/Doxygen%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Doxygen语法实践</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-29 05:17:59 / 修改时间：05:26:20" itemprop="dateCreated datePublished" datetime="2024-12-29T05:17:59+08:00">2024-12-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="代码规范">代码规范</h2>
+<p>注意一下提到的代码规范符合<strong>Doxygen要求</strong></p>
+<p>参考链接<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41204464/article/details/102458103">CSDN关于Doxygen语法</a></p>
+<h3 id="变量批注">变量批注</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>; <span class="comment">//!&lt; 测试变量a的单行批注</span></span><br><span class="line"><span class="type">int</span> b = <span class="number">1</span>; <span class="comment">/*!&lt; 测试变量b的块批注 */</span></span><br></pre></td></tr></table></figure>
+<h3 id="在每个文件的头部添加如下注释">在每个文件的头部添加如下注释</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  * @file    文件名</span></span><br><span class="line"><span class="comment">  * @author  作者名</span></span><br><span class="line"><span class="comment">  * @version 版本号V0.0.1</span></span><br><span class="line"><span class="comment">  * @date    日期31-January-2024</span></span><br><span class="line"><span class="comment">  * @brief   文件作用简介</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  * @attention</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * THE PRESENT FUCTIONS WHICH IS FOR GUIDANCE ONLY</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure>
+<h3 id="在函数前添加如下注释">在函数前添加如下注释</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 函数简介</span></span><br><span class="line"><span class="comment"> * @param 形参1: 形参1说明</span></span><br><span class="line"><span class="comment"> * @param 形参2: 形参2说明</span></span><br><span class="line"><span class="comment"> * @retval 返回值说明</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// 例如</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  Initializes the GPIOx peripheral according to the specified</span></span><br><span class="line"><span class="comment">  *         parameters in the GPIO_InitStruct.</span></span><br><span class="line"><span class="comment">  * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.</span></span><br><span class="line"><span class="comment">  * @param  GPIO_InitStruct: pointer to a GPIO_InitTypeDef structure that</span></span><br><span class="line"><span class="comment">  *         contains the configuration information for the specified GPIO peripheral.</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">GPIO_Init</span><span class="params">(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h3 id="在结构体或枚举变量前添加如下注释">在结构体或枚举变量前添加如下注释</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 结构体或枚举说明</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> a; <span class="comment">//!&lt; 成员单行注释</span></span><br><span class="line">    <span class="type">int</span> b; <span class="comment">/*!&lt; 成员</span></span><br><span class="line"><span class="comment">                换行注释块 */</span></span><br><span class="line">&#125;A;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例如</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">  * @brief  GPIO Init structure definition  </span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="type">uint16_t</span> GPIO_Pin;             <span class="comment">/*!&lt; Specifies the GPIO pins to be configured.</span></span><br><span class="line"><span class="comment">                                      This parameter can be any value of @ref GPIO_pins_define */</span></span><br><span class="line"></span><br><span class="line">  GPIOSpeed_TypeDef GPIO_Speed;  <span class="comment">/*!&lt; Specifies the speed for the selected pins.</span></span><br><span class="line"><span class="comment">                                      This parameter can be a value of @ref GPIOSpeed_TypeDef */</span></span><br><span class="line"></span><br><span class="line">  GPIOMode_TypeDef GPIO_Mode;    <span class="comment">/*!&lt; Specifies the operating mode for the selected pins.</span></span><br><span class="line"><span class="comment">                                      This parameter can be a value of @ref GPIOMode_TypeDef */</span></span><br><span class="line">&#125;GPIO_InitTypeDef;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">  * @brief  Bit_SET and Bit_RESET enumeration  </span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span> Bit_RESET = <span class="number">0</span>,</span><br><span class="line">  Bit_SET</span><br><span class="line">&#125;BitAction;</span><br></pre></td></tr></table></figure>
+<h2 id="doxygen-gui frontend 软件使用">Doxygen GUI frontend 软件使用</h2>
+<p><img data-src="https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202412290520841.png" alt="1"></p>
+<p>点击File-&gt;Save; 保存一个模板文件</p>
+<p><img data-src="https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202412290521204.png" alt="2"></p>
+<ol>
+<li>输入项目名称(Project Name)</li>
+<li>选择源码文件夹位置(Source code directory)</li>
+<li>勾选递归扫描(Scan recursively)</li>
+<li>选择生成的目标文件夹位置(Destination directory)</li>
+</ol>
+<p><img data-src="https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202412290524732.png" alt="3"></p>
+<p>在output中取消勾选Latex选项(如果只需要html格式文档的话)</p>
+<p><img data-src="https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202412290525542.png" alt="4"></p>
+<p>点击 Run doxygen 后可点击 Show HTML output 来查看</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/15/Vscode%E6%98%BE%E7%A4%BA%E5%88%97%E6%A0%87%E5%B0%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -837,82 +920,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/06/%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%80%9A%E8%BF%87%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Eric Ellis">
-      <meta itemprop="description" content="记录生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="过隙影">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/01/06/%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%80%9A%E8%BF%87%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">配置虚拟机通过主机代理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-01-06 19:46:15" itemprop="dateCreated datePublished" datetime="2024-01-06T19:46:15+08:00">2024-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-29 05:11:08" itemprop="dateModified" datetime="2024-12-29T05:11:08+08:00">2024-12-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="说明">说明</h2>
-<ul>
-<li><strong>主机环境</strong>: Win11</li>
-<li><strong>虚拟机环境</strong>: VMware Ubantu16.04</li>
-</ul>
-<h2 id="windows-主机查询ip地址">Windows 主机查询IP地址</h2>
-<p>在cmd下输入<strong>ipconfig</strong>, 复制IPv4地址</p>
-<h2 id="代理软件配置">代理软件配置</h2>
-<p>在代理软件的参数设置下<strong>打开允许来自局域网的连接</strong></p>
-<h2 id="虚拟机下配置">虚拟机下配置</h2>
-<p>在VMware下配置网络适配器为NAT</p>
-<p>在网络配置中添加代理, <strong>地址为本机的IPv4地址, 端口查看代理软件</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -982,7 +989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
