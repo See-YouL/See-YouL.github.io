@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.css" integrity="sha256-zM8WXtG4eUn7dKKNMTuoWZub++VnSfaOpA/8PJfvTBo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="相关链接 Github仓库地址 B站视频理论知识链接 B站视频实验部分链接  理论知识中断系统中断: 在主程序运行过程中,出现了特定的中断触发条件(中断源), 使得CPU暂停当前正在运行的程序,转而处理中断程序,处理完成后又返回原来被暂停的位置继续运行. 中断优先级: 当有多个中断源同时申请中断时,CPU会根据中断源的轻重缓急进行裁决,优先相应更加紧急的中断源. 中断嵌套: 当一个中断程序正在运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EXTI外部中断">
+<meta property="og:url" content="http://example.com/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/index.html">
+<meta property="og:site_name" content="过隙影">
+<meta property="og:description" content="相关链接 Github仓库地址 B站视频理论知识链接 B站视频实验部分链接  理论知识中断系统中断: 在主程序运行过程中,出现了特定的中断触发条件(中断源), 使得CPU暂停当前正在运行的程序,转而处理中断程序,处理完成后又返回原来被暂停的位置继续运行. 中断优先级: 当有多个中断源同时申请中断时,CPU会根据中断源的轻重缓急进行裁决,优先相应更加紧急的中断源. 中断嵌套: 当一个中断程序正在运行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418003747046.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418005846195.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418010043897.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418010738918.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418011608366.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418011805075.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418044012051.png">
+<meta property="article:published_time" content="2025-04-17T21:52:58.000Z">
+<meta property="article:modified_time" content="2025-04-17T21:53:15.847Z">
+<meta property="article:author" content="含生">
+<meta property="article:tag" content="STM32">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418003747046.png">
+
+
+<link rel="canonical" href="http://example.com/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/","path":"2025/04/18/EXTI外部中断/","title":"EXTI外部中断"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>EXTI外部中断 | 过隙影</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.js" integrity="sha256-hiUEBwFEpLF6DlB8sGXlKo4kPZ46Ui4qGpd0vrVkOm4=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">过隙影</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">相关链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">理论知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.</span> <span class="nav-text">中断系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">中断执行流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NVIC%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">NVIC的基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NVIC%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%86%E7%BB%84"><span class="nav-number">2.4.</span> <span class="nav-text">NVIC优先级分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXTI%E7%AE%80%E4%BB%8B"><span class="nav-number">2.5.</span> <span class="nav-text">EXTI简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXTI%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">2.6.</span> <span class="nav-text">EXTI的基本结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">实验测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text">硬件连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%AB%E7%84%B0%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">火焰传感器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.3.</span> <span class="nav-text">程序设计</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">含生</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="含生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="过隙影">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="EXTI外部中断 | 过隙影">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EXTI外部中断
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-04-18 05:52:58 / 修改时间：05:53:15" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:58+08:00">2025-04-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/See-YouL/JXSTM32/tree/main/5-1%20EXTI%E4%B8%AD%E6%96%AD%E7%81%AB%E7%84%B0%E7%9B%91%E6%B5%8B">Github仓库地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=11">B站视频理论知识链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=12">B站视频实验部分链接</a></li>
+</ul>
+<h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><h3 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h3><p>中断: 在主程序运行过程中,出现了特定的中断触发条件(中断源), 使得CPU暂停当前正在运行的程序,转而处<br>理中断程序,处理完成后又返回原来被暂停的位置继续运行.</p>
+<p>中断优先级: 当有多个中断源同时申请中断时,CPU会根据中断源的轻重缓急进行裁决,优先相应更加紧急的中断源.</p>
+<p>中断嵌套: 当一个中断程序正在运行时,又有新的更高优先级的中断源申请中断,CPU再次暂停当前中断程序,转而处理新的中断程序,处理完成后依次进行返回.</p>
+<h3 id="中断执行流程"><a href="#中断执行流程" class="headerlink" title="中断执行流程"></a>中断执行流程</h3><p>中断执行流程图如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418003747046.png" alt="中断执行流程图"></p>
+<h3 id="NVIC的基本结构"><a href="#NVIC的基本结构" class="headerlink" title="NVIC的基本结构"></a>NVIC的基本结构</h3><p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418005846195.png" alt="NVIC基本结构图"></p>
+<h3 id="NVIC优先级分组"><a href="#NVIC优先级分组" class="headerlink" title="NVIC优先级分组"></a>NVIC优先级分组</h3><p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418010043897.png" alt="NVIC优先级分组"> </p>
+<h3 id="EXTI简介"><a href="#EXTI简介" class="headerlink" title="EXTI简介"></a>EXTI简介</h3><p>外部中断（External Interrupt）是指来自外部设备或信号的中断请求。</p>
+<p>EXTI可以监测GPIO口的电平信号,当其指定的GPIO口电平发生变化时,EXTI将立即向NVIC发出中断申请,<br>经过NVIC裁决后即可中断CPU主程序,使CPU执行EXTI对应的中断程序.</p>
+<p>支持的触发方式有：上升沿&#x2F;下降沿&#x2F;双边沿&#x2F;软件触发。</p>
+<p>支持的GPIO口: 所有GPIO口均可触发外部中断但是相同的Pin不能同时触发中断(如PA0和PB0不能同时触发中断).</p>
+<p>通道数: 16个GPIO_Pin,外加PVD输出,RTC闹钟,USB唤醒,以太网唤醒.</p>
+<p>触发响应方式: 中断响应&#x2F;事件响应(用来触发其他外设的事件).</p>
+<h3 id="EXTI的基本结构"><a href="#EXTI的基本结构" class="headerlink" title="EXTI的基本结构"></a>EXTI的基本结构</h3><p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418010738918.png" alt="EXTI的基本结构图"></p>
+<ul>
+<li>经过AFIO选择后仅有16路GPIO口可以触发EXTI中断,所以PA0和PB0不可以同时触发中断.</li>
+<li>EXTI9_5和EXTI15_10需要通过标志位来区分是哪个GPIO口触发的中断.</li>
+<li>EXTI给其他外设的中断为事件响应</li>
+</ul>
+<p>AFIO结构图如下:</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418011608366.png" alt="AFIO结构图"></p>
+<p>通过数据选择器来将PA0~PG0选择其中一条线到EXTI0.</p>
+<p>EXTI框图如下:</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418011805075.png" alt="EXTI框图"></p>
+<ol>
+<li>输入线进入边沿监测电路,选择上升沿&#x2F;下降沿&#x2F;双边沿触发.</li>
+<li>边沿监测电路信号和软件中断事件寄存器一起进入逻辑或门</li>
+<li>触发信号通过逻辑或门后分两路,上面一路触发中断,下面一路触发事件.</li>
+<li>触发中断会置请求挂起寄存器, 请求挂起寄存器和中断屏蔽器一起进入逻辑与门,进入NVIC中断控制器.</li>
+<li>触发事件和事件屏蔽寄存器一起进入逻辑与门,再通过脉冲发生器用来触发其他外设.</li>
+</ol>
+<h2 id="实验测试"><a href="#实验测试" class="headerlink" title="实验测试"></a>实验测试</h2><p>实验目标: 使用火焰传感器监测火焰并通过OLED屏显示火焰警报</p>
+<h3 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h3><p>OLED连接</p>
+<ul>
+<li>SCK 接 PG12</li>
+<li>SDA 接 PD5</li>
+<li>RES 接 PD4</li>
+<li>DC 接 PD15</li>
+<li>CS 接 PD1</li>
+</ul>
+<p>火焰传感器连接</p>
+<ul>
+<li>DO 接 PB13</li>
+</ul>
+<h3 id="火焰传感器"><a href="#火焰传感器" class="headerlink" title="火焰传感器"></a>火焰传感器</h3><p>实物如图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250418044012051.png" alt="火焰传感器3针蓝版"></p>
+<p>资料链接 : <a target="_blank" rel="noopener" href="https://telesky.yuque.com/bdys8w/01/qyw1o22t6g5e278p">火焰传感器链接</a></p>
+<p>传感器型号: 3针版</p>
+<p>当火焰强度超过阈值时,输出低电平,否则输出高电平,所以需要配置为下降沿触发</p>
+<h3 id="程序设计"><a href="#程序设计" class="headerlink" title="程序设计"></a>程序设计</h3><p>在<code>fire.c</code>文件中编写如下代码</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x_exti.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> FireState = <span class="number">0</span>; <span class="comment">// 火焰传感器状态变量 0:无火焰,1:有火焰  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 火焰传感器初始化函数</span></span><br><span class="line"><span class="comment"> * 1. 打开GPIOB时钟和AFIO时钟</span></span><br><span class="line"><span class="comment"> * 2. 配置PB14为上拉输入模式,速度50MHz</span></span><br><span class="line"><span class="comment"> * 3. 配置中断线为PB14</span></span><br><span class="line"><span class="comment"> * 4. 配置中断线为EXTI_Line14,使能中断线,模式选为中断模式,触发模式选为下降沿触发</span></span><br><span class="line"><span class="comment"> * 4. NVIC分组设置为2组即2个抢占优先级,2个响应优先级</span></span><br><span class="line"><span class="comment"> * 5. NVIC通道设置为EXTI15_10,使能NVIC通道,抢占优先级设置为1,响应优先级设置为1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Fire_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); <span class="comment">// 打开GPIOB时钟</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); <span class="comment">// 打开AFIO时钟</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// GPIO PB14初始化</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; <span class="comment">// 配置上拉输入模式</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14; <span class="comment">// 配置端口为14</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置输出速度50MHz</span></span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure); <span class="comment">// 完成PB14初始化</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// AFIO初始化(中断线配置)</span></span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource14); <span class="comment">// 配置中断线为PB14</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// EXTI初始化</span></span><br><span class="line">	EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line14; <span class="comment">// 中断线选为14</span></span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE; <span class="comment">// 中断线使能</span></span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt; <span class="comment">// 模式选为中断模式</span></span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; <span class="comment">// 触发模式选为下降沿触发</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// NVIC初始化</span></span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); <span class="comment">// NVIC分组设置为2组即2个抢占优先级,2个响应优先级</span></span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn; <span class="comment">// NVIC通道设置为EXTI15_10</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; <span class="comment">// 使能NVIC通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>; <span class="comment">// 抢占优先级设置为1</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>; <span class="comment">// 响应优先级设置为1</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 火焰传感器状态获取函数</span></span><br><span class="line"><span class="comment"> * 返回值: 0:无火焰,1:有火焰</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">FireState_Get</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> FireState;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 火焰传感器状态清除函数</span></span><br><span class="line"><span class="comment"> * 清除火焰传感器状态,将状态变量清零</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">FireState_Clear</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	FireState = <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * EXTI15_10中断处理函数</span></span><br><span class="line"><span class="comment"> * 1. 判断中断线是否为EXTI_Line14,如果是,则将火焰状态变量置为1,表示有火焰</span></span><br><span class="line"><span class="comment"> * 2. 清除中断标志位</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI15_10_IRQHandler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123; </span><br><span class="line">	<span class="keyword">if</span> (SET == EXTI_GetITStatus(EXTI_Line14))</span><br><span class="line">	&#123;</span><br><span class="line">		FireState = <span class="number">1</span>;</span><br><span class="line">		EXTI_ClearITPendingBit(EXTI_Line14);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在<code>fire.h</code>文件中编写如下代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __FIRE_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __FIRE_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Fire_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 初始化火焰传感器</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">FireState_Get</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 获取火焰传感器状态</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">FireState_Clear</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 清除火焰传感器状态</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在<code>main.c</code>文件中编写如下代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x_exti.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;sys.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;oled.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;bmp.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;fire.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 初始化延迟函数</span></span><br><span class="line">	delay_init();</span><br><span class="line">    <span class="comment">// 初始化OLED屏幕</span></span><br><span class="line">	OLED_Init();</span><br><span class="line">    <span class="comment">// 初始化火焰传感器</span></span><br><span class="line">	Fire_Init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == FireState_Get()) <span class="comment">// 如果火焰传感器检测到火焰</span></span><br><span class="line">		&#123;</span><br><span class="line">			OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">			OLED_ShowString(<span class="number">1</span>, <span class="number">1</span>, <span class="string">&quot;Fire Warning&quot;</span>, <span class="number">16</span>); <span class="comment">// 显示火焰警报</span></span><br><span class="line">			OLED_Refresh(); <span class="comment">// 刷新屏幕</span></span><br><span class="line">			delay_ms(<span class="number">5000</span>); <span class="comment">// 延时5秒</span></span><br><span class="line">			FireState_Clear(); <span class="comment">// 清除火焰传感器状态</span></span><br><span class="line">			OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">0</span> == FireState_Get()) <span class="comment">// 如果火焰传感器没有检测到火焰</span></span><br><span class="line">		&#123;</span><br><span class="line">			OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">			OLED_ShowString(<span class="number">1</span>, <span class="number">1</span>, <span class="string">&quot;Stand By&quot;</span>, <span class="number">16</span>); <span class="comment">// 显示待机状态</span></span><br><span class="line">			OLED_Refresh(); <span class="comment">// 刷新屏幕</span></span><br><span class="line">			delay_ms(<span class="number">5000</span>); <span class="comment">// 延时5秒</span></span><br><span class="line">			OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">		&#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// 如果火焰传感器状态异常</span></span><br><span class="line">        &#123;</span><br><span class="line">            OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">            OLED_ShowString(<span class="number">1</span>, <span class="number">1</span>, <span class="string">&quot;Sensor Error&quot;</span>, <span class="number">16</span>); <span class="comment">// 显示传感器错误</span></span><br><span class="line">            OLED_Refresh(); <span class="comment">// 刷新屏幕</span></span><br><span class="line">            delay_ms(<span class="number">5000</span>); <span class="comment">// 延时5秒</span></span><br><span class="line">            OLED_Clear(); <span class="comment">// 清屏</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/STM32/" rel="tag"># STM32</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/18/GPIO%E8%BE%93%E5%85%A5/" rel="prev" title="GPIO输入">
+                  <i class="fa fa-angle-left"></i> GPIO输入
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC82MDU4MC8zNzA1MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">含生</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/third-party/comments/livere.js" defer></script>
+
+</body>
+</html>

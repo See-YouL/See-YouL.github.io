@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.css" integrity="sha256-zM8WXtG4eUn7dKKNMTuoWZub++VnSfaOpA/8PJfvTBo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="相关链接 Github仓库地址 B站视频理论知识链接 B站视频实验部分链接  实验测试LED驱动新建Hardware文件夹来存放驱动文件 其中LED.h和LED.c为LED的驱动文件 LED硬件电路如下图所示   红色LED在PB5 绿色LED在PB0 蓝色LED在PB1 红绿蓝LED均为低电平点亮，共阳极接法  在LED.c中定义红色LED的驱动函数  LED_R_Init()：初始化红色LED">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GPIO输入">
+<meta property="og:url" content="http://example.com/2025/04/18/GPIO%E8%BE%93%E5%85%A5/index.html">
+<meta property="og:site_name" content="过隙影">
+<meta property="og:description" content="相关链接 Github仓库地址 B站视频理论知识链接 B站视频实验部分链接  实验测试LED驱动新建Hardware文件夹来存放驱动文件 其中LED.h和LED.c为LED的驱动文件 LED硬件电路如下图所示   红色LED在PB5 绿色LED在PB0 蓝色LED在PB1 红绿蓝LED均为低电平点亮，共阳极接法  在LED.c中定义红色LED的驱动函数  LED_R_Init()：初始化红色LED">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417165941162.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417170945925.png">
+<meta property="article:published_time" content="2025-04-17T21:52:16.000Z">
+<meta property="article:modified_time" content="2025-04-17T21:52:40.906Z">
+<meta property="article:author" content="含生">
+<meta property="article:tag" content="STM32">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417165941162.png">
+
+
+<link rel="canonical" href="http://example.com/2025/04/18/GPIO%E8%BE%93%E5%85%A5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/04/18/GPIO%E8%BE%93%E5%85%A5/","path":"2025/04/18/GPIO输入/","title":"GPIO输入"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>GPIO输入 | 过隙影</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.js" integrity="sha256-hiUEBwFEpLF6DlB8sGXlKo4kPZ46Ui4qGpd0vrVkOm4=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2025/04/18/GPIO%E8%BE%93%E5%85%A5/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">过隙影</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">相关链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">实验测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LED%E9%A9%B1%E5%8A%A8"><span class="nav-number">2.1.</span> <span class="nav-text">LED驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E9%A9%B1%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">按键驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">软件设计</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">含生</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/18/GPIO%E8%BE%93%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="含生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="过隙影">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="GPIO输入 | 过隙影">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GPIO输入
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-04-18 05:52:16 / 修改时间：05:52:40" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:16+08:00">2025-04-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/See-YouL/JXSTM32/tree/main/3-4%20GPIO%E8%BE%93%E5%85%A5-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6LED">Github仓库地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=7">B站视频理论知识链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=8">B站视频实验部分链接</a></li>
+</ul>
+<h2 id="实验测试"><a href="#实验测试" class="headerlink" title="实验测试"></a>实验测试</h2><h3 id="LED驱动"><a href="#LED驱动" class="headerlink" title="LED驱动"></a>LED驱动</h3><p>新建Hardware文件夹来存放驱动文件</p>
+<p>其中<code>LED.h</code>和<code>LED.c</code>为LED的驱动文件</p>
+<p>LED硬件电路如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417165941162.png" alt="LED硬件电路"></p>
+<ul>
+<li>红色LED在PB5</li>
+<li>绿色LED在PB0</li>
+<li>蓝色LED在PB1</li>
+<li>红绿蓝LED均为低电平点亮，共阳极接法</li>
+</ul>
+<p>在<code>LED.c</code>中定义红色LED的驱动函数</p>
+<ul>
+<li>LED_R_Init()：初始化红色LED</li>
+<li>LED_R_ON()：点亮红色LED</li>
+<li>LED_R_OFF()：熄灭红色LED</li>
+<li>LED_R_Turn()：翻转红色LED状态</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化红色LED（PB5）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); <span class="comment">// 打开GPIOB时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 配置为推挽输出</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; <span class="comment">// 配置端口为5</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置端口速度为50MHz</span></span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure); <span class="comment">// 完成PB5初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点亮红色LED(低电平点亮）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_ResetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 熄灭红色LED(高电平熄灭）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_SetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 翻转LED状态</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">0</span> == GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_5))</span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_SetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5低电平时设置为高电平</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_ResetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5高电平时设置为低电平</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">````</span><br><span class="line"></span><br><span class="line">在`LED.h`中提供函数接口</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __LED_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __LED_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R初始化</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R点亮函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R熄灭函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R翻转状态函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="按键驱动"><a href="#按键驱动" class="headerlink" title="按键驱动"></a>按键驱动</h3><p>按键接在PA0引脚, 按键按下PA0为高电平</p>
+<p>按键的硬件连接图如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417170945925.png" alt="按键连接图"></p>
+<p>配置PA0引脚为下拉输入模式</p>
+<p>在<code>KEY.c</code>定义按键的驱动函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span> <span class="comment">// 延时模块</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化按键PA0</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 打开GPIOA时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; <span class="comment">// 配置下拉输入模式,默认低电平</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 配置端口0</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置输出速度50MHz不影响输入模式</span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);  <span class="comment">// 完成初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键按下返回1</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">uint8_t</span> KEYNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) <span class="comment">// 按键按下PA0为高电平</span></span><br><span class="line">	&#123;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 按下按键延时消抖</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0))</span><br><span class="line">		&#123;</span><br><span class="line">			;</span><br><span class="line">		&#125;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 松开按键延时消抖</span></span><br><span class="line">		KEYNum = <span class="number">1</span>; <span class="comment">// 按键按下KEYNum为1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> KEYNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在<code>KEY.h</code>中提供函数接口</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __KEY_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __KEY_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 按键初始化函数</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 读取按键函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h3><p>执行流程</p>
+<ol>
+<li>在<code>main.c</code>中定义全局变量KEYNum用来存储按键状态</li>
+<li>进行LED和按键的初始化</li>
+<li>在while循环中不断读取按键的状态并存储在KEYNum中</li>
+<li>判断按键是否按下,按下则翻转LED状态,未按下则不执行翻转操作</li>
+</ol>
+<p>在<code>main.c</code>中实现主控制流程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实验目标：实现按键控制LED点亮</span></span><br><span class="line"><span class="comment"> * 硬件连接: 红色LED接在PB5, 按键接在PA0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;LED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;KEY.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> KEYNum = <span class="number">0</span>; <span class="comment">// 全局变量KEYNum</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 初始化红色LED</span></span><br><span class="line">	LED_R_Init();</span><br><span class="line">	<span class="comment">// 初始化按键</span></span><br><span class="line">	KEY_Init();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		KEYNum = KEY_GetNum(); <span class="comment">// 读取按键值</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == KEYNum) <span class="comment">// 按键按下</span></span><br><span class="line">		&#123;</span><br><span class="line">			LED_R_Turn();</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/STM32/" rel="tag"># STM32</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/18/GPIO%E8%BE%93%E5%87%BA/" rel="prev" title="GPIO输出">
+                  <i class="fa fa-angle-left"></i> GPIO输出
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/" rel="next" title="EXTI外部中断">
+                  EXTI外部中断 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC82MDU4MC8zNzA1MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">含生</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script src="/js/third-party/comments/livere.js" defer></script>
+
+</body>
+</html>
