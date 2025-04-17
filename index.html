@@ -89,6 +89,9 @@
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -111,7 +114,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -179,8 +182,9 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -235,7 +239,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-18 05:52:58 / 修改时间：05:53:15" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:58+08:00">2025-04-18</time>
+      <time title="创建时间：2025-04-18 05:52:58 / 修改时间：06:10:35" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:58+08:00">2025-04-18</time>
     </span>
 
   
@@ -366,7 +370,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-18 05:52:16 / 修改时间：05:52:40" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:16+08:00">2025-04-18</time>
+      <time title="创建时间：2025-04-18 05:52:16 / 修改时间：06:09:44" itemprop="dateCreated datePublished" datetime="2025-04-18T05:52:16+08:00">2025-04-18</time>
     </span>
 
   
@@ -478,7 +482,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-18 05:51:38 / 修改时间：05:52:05" itemprop="dateCreated datePublished" datetime="2025-04-18T05:51:38+08:00">2025-04-18</time>
+      <time title="创建时间：2025-04-18 05:51:38 / 修改时间：06:09:39" itemprop="dateCreated datePublished" datetime="2025-04-18T05:51:38+08:00">2025-04-18</time>
     </span>
 
   
@@ -611,7 +615,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-18 05:50:36 / 修改时间：05:51:22" itemprop="dateCreated datePublished" datetime="2025-04-18T05:50:36+08:00">2025-04-18</time>
+      <time title="创建时间：2025-04-18 05:50:36 / 修改时间：06:09:23" itemprop="dateCreated datePublished" datetime="2025-04-18T05:50:36+08:00">2025-04-18</time>
     </span>
 
   
@@ -652,6 +656,19 @@
 
 <h3 id="修改主题配置文件"><a href="#修改主题配置文件" class="headerlink" title="修改主题配置文件"></a>修改主题配置文件</h3><p>打开<code>_config.next.yml</code>文件，修改以下内容：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Allow to cache content generation.</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置标签功能"><a href="#配置标签功能" class="headerlink" title="配置标签功能"></a>配置标签功能</h2><p>在根目录下输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p>默认在<code>source\tags\index.md</code>中创建</p>
+<p>修改<code>index.md</code>文件，添加以下内容：</p>
+<p>即添加type: “tags”</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2025-04-18 06:00:31</span><br><span class="line"><span class="section">type: &quot;tags&quot;</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<p>修改<code>_config-next.yml</code>文件，修改以下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\scallop\_config.yml</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
+
+<p>在文章中添加tags标签即可</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: EXTI外部中断</span><br><span class="line">date: 2025-04-18 05:52:58</span><br><span class="line">tags: </span><br><span class="line"><span class="bullet"> -</span> STM32</span><br><span class="line"><span class="section"> - EXTI</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="安装搜索功能"><a href="#安装搜索功能" class="headerlink" title="安装搜索功能"></a>安装搜索功能</h2><h3 id="安装搜索插件"><a href="#安装搜索插件" class="headerlink" title="安装搜索插件"></a>安装搜索插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
 
