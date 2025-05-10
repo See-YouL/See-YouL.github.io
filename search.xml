@@ -1,58 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GPIO输入</title>
-    <url>/2025/04/18/GPIO%E8%BE%93%E5%85%A5/</url>
-    <content><![CDATA[<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
-<li><a href="https://github.com/See-YouL/JXSTM32/tree/main/3-4%20GPIO%E8%BE%93%E5%85%A5-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6LED">Github仓库地址</a></li>
-<li><a href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=7">B站视频理论知识链接</a></li>
-<li><a href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=8">B站视频实验部分链接</a></li>
-</ul>
-<h2 id="实验测试"><a href="#实验测试" class="headerlink" title="实验测试"></a>实验测试</h2><h3 id="LED驱动"><a href="#LED驱动" class="headerlink" title="LED驱动"></a>LED驱动</h3><p>新建Hardware文件夹来存放驱动文件</p>
-<p>其中<code>LED.h</code>和<code>LED.c</code>为LED的驱动文件</p>
-<p>LED硬件电路如下图所示</p>
-<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417165941162.png" alt="LED硬件电路"></p>
-<ul>
-<li>红色LED在PB5</li>
-<li>绿色LED在PB0</li>
-<li>蓝色LED在PB1</li>
-<li>红绿蓝LED均为低电平点亮，共阳极接法</li>
-</ul>
-<p>在<code>LED.c</code>中定义红色LED的驱动函数</p>
-<ul>
-<li>LED_R_Init()：初始化红色LED</li>
-<li>LED_R_ON()：点亮红色LED</li>
-<li>LED_R_OFF()：熄灭红色LED</li>
-<li>LED_R_Turn()：翻转红色LED状态</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化红色LED（PB5）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); <span class="comment">// 打开GPIOB时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 配置为推挽输出</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; <span class="comment">// 配置端口为5</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置端口速度为50MHz</span></span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure); <span class="comment">// 完成PB5初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点亮红色LED(低电平点亮）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_ResetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 熄灭红色LED(高电平熄灭）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_SetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 翻转LED状态</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">0</span> == GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_5))</span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_SetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5低电平时设置为高电平</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_ResetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5高电平时设置为低电平</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">````</span><br><span class="line"></span><br><span class="line">在`LED.h`中提供函数接口</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __LED_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __LED_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R初始化</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R点亮函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R熄灭函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R翻转状态函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="按键驱动"><a href="#按键驱动" class="headerlink" title="按键驱动"></a>按键驱动</h3><p>按键接在PA0引脚, 按键按下PA0为高电平</p>
-<p>按键的硬件连接图如下图所示</p>
-<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417170945925.png" alt="按键连接图"></p>
-<p>配置PA0引脚为下拉输入模式</p>
-<p>在<code>KEY.c</code>定义按键的驱动函数</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span> <span class="comment">// 延时模块</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化按键PA0</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 打开GPIOA时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; <span class="comment">// 配置下拉输入模式,默认低电平</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 配置端口0</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置输出速度50MHz不影响输入模式</span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);  <span class="comment">// 完成初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键按下返回1</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">uint8_t</span> KEYNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) <span class="comment">// 按键按下PA0为高电平</span></span><br><span class="line">	&#123;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 按下按键延时消抖</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0))</span><br><span class="line">		&#123;</span><br><span class="line">			;</span><br><span class="line">		&#125;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 松开按键延时消抖</span></span><br><span class="line">		KEYNum = <span class="number">1</span>; <span class="comment">// 按键按下KEYNum为1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> KEYNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在<code>KEY.h</code>中提供函数接口</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __KEY_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __KEY_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 按键初始化函数</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 读取按键函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h3><p>执行流程</p>
-<ol>
-<li>在<code>main.c</code>中定义全局变量KEYNum用来存储按键状态</li>
-<li>进行LED和按键的初始化</li>
-<li>在while循环中不断读取按键的状态并存储在KEYNum中</li>
-<li>判断按键是否按下,按下则翻转LED状态,未按下则不执行翻转操作</li>
-</ol>
-<p>在<code>main.c</code>中实现主控制流程</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实验目标：实现按键控制LED点亮</span></span><br><span class="line"><span class="comment"> * 硬件连接: 红色LED接在PB5, 按键接在PA0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;LED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;KEY.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> KEYNum = <span class="number">0</span>; <span class="comment">// 全局变量KEYNum</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 初始化红色LED</span></span><br><span class="line">	LED_R_Init();</span><br><span class="line">	<span class="comment">// 初始化按键</span></span><br><span class="line">	KEY_Init();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		KEYNum = KEY_GetNum(); <span class="comment">// 读取按键值</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == KEYNum) <span class="comment">// 按键按下</span></span><br><span class="line">		&#123;</span><br><span class="line">			LED_R_Turn();</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>STM32</tag>
-        <tag>GPIO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>EXTI外部中断</title>
     <url>/2025/04/18/EXTI%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</url>
     <content><![CDATA[<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
@@ -121,6 +69,78 @@
       <tags>
         <tag>STM32</tag>
         <tag>EXTI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GPIO输入</title>
+    <url>/2025/04/18/GPIO%E8%BE%93%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a href="https://github.com/See-YouL/JXSTM32/tree/main/3-4%20GPIO%E8%BE%93%E5%85%A5-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6LED">Github仓库地址</a></li>
+<li><a href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=7">B站视频理论知识链接</a></li>
+<li><a href="https://www.bilibili.com/video/BV1th411z7sn?spm_id_from=333.788.videopod.episodes&vd_source=82fdaa13f57d339420a33b8e98a53858&p=8">B站视频实验部分链接</a></li>
+</ul>
+<h2 id="实验测试"><a href="#实验测试" class="headerlink" title="实验测试"></a>实验测试</h2><h3 id="LED驱动"><a href="#LED驱动" class="headerlink" title="LED驱动"></a>LED驱动</h3><p>新建Hardware文件夹来存放驱动文件</p>
+<p>其中<code>LED.h</code>和<code>LED.c</code>为LED的驱动文件</p>
+<p>LED硬件电路如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417165941162.png" alt="LED硬件电路"></p>
+<ul>
+<li>红色LED在PB5</li>
+<li>绿色LED在PB0</li>
+<li>蓝色LED在PB1</li>
+<li>红绿蓝LED均为低电平点亮，共阳极接法</li>
+</ul>
+<p>在<code>LED.c</code>中定义红色LED的驱动函数</p>
+<ul>
+<li>LED_R_Init()：初始化红色LED</li>
+<li>LED_R_ON()：点亮红色LED</li>
+<li>LED_R_OFF()：熄灭红色LED</li>
+<li>LED_R_Turn()：翻转红色LED状态</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化红色LED（PB5）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); <span class="comment">// 打开GPIOB时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 配置为推挽输出</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; <span class="comment">// 配置端口为5</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置端口速度为50MHz</span></span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure); <span class="comment">// 完成PB5初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点亮红色LED(低电平点亮）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_ResetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 熄灭红色LED(高电平熄灭）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	GPIO_SetBits(GPIOB, GPIO_Pin_5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 翻转LED状态</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">0</span> == GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_5))</span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_SetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5低电平时设置为高电平</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		GPIO_ResetBits(GPIOB, GPIO_Pin_5); <span class="comment">// PB5高电平时设置为低电平</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">````</span><br><span class="line"></span><br><span class="line">在`LED.h`中提供函数接口</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __LED_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __LED_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R初始化</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_ON</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R点亮函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_OFF</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R熄灭函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_R_Turn</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// LED_R翻转状态函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="按键驱动"><a href="#按键驱动" class="headerlink" title="按键驱动"></a>按键驱动</h3><p>按键接在PA0引脚, 按键按下PA0为高电平</p>
+<p>按键的硬件连接图如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250417170945925.png" alt="按键连接图"></p>
+<p>配置PA0引脚为下拉输入模式</p>
+<p>在<code>KEY.c</code>定义按键的驱动函数</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span> <span class="comment">// 延时模块</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化按键PA0</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 打开GPIOA时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; <span class="comment">// 配置下拉输入模式,默认低电平</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 配置端口0</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">// 配置输出速度50MHz不影响输入模式</span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);  <span class="comment">// 完成初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键按下返回1</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">uint8_t</span> KEYNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) <span class="comment">// 按键按下PA0为高电平</span></span><br><span class="line">	&#123;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 按下按键延时消抖</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span> == GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0))</span><br><span class="line">		&#123;</span><br><span class="line">			;</span><br><span class="line">		&#125;</span><br><span class="line">		Delay_ms(<span class="number">20</span>); <span class="comment">// 松开按键延时消抖</span></span><br><span class="line">		KEYNum = <span class="number">1</span>; <span class="comment">// 按键按下KEYNum为1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> KEYNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在<code>KEY.h</code>中提供函数接口</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __KEY_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __KEY_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">KEY_Init</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 按键初始化函数</span></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">KEY_GetNum</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 读取按键函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h3><p>执行流程</p>
+<ol>
+<li>在<code>main.c</code>中定义全局变量KEYNum用来存储按键状态</li>
+<li>进行LED和按键的初始化</li>
+<li>在while循环中不断读取按键的状态并存储在KEYNum中</li>
+<li>判断按键是否按下,按下则翻转LED状态,未按下则不执行翻转操作</li>
+</ol>
+<p>在<code>main.c</code>中实现主控制流程</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实验目标：实现按键控制LED点亮</span></span><br><span class="line"><span class="comment"> * 硬件连接: 红色LED接在PB5, 按键接在PA0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;LED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;KEY.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> KEYNum = <span class="number">0</span>; <span class="comment">// 全局变量KEYNum</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 初始化红色LED</span></span><br><span class="line">	LED_R_Init();</span><br><span class="line">	<span class="comment">// 初始化按键</span></span><br><span class="line">	KEY_Init();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		KEYNum = KEY_GetNum(); <span class="comment">// 读取按键值</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == KEYNum) <span class="comment">// 按键按下</span></span><br><span class="line">		&#123;</span><br><span class="line">			LED_R_Turn();</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>STM32</tag>
+        <tag>GPIO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh:connect to host github.com port 22</title>
+    <url>/2025/05/11/ssh-connect-to-host-github-com-port-22/</url>
+    <content><![CDATA[<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://zhuanlan.zhihu.com/p/521340971">知乎链接</a></p>
+<p>相关问题部分截图如下:</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250511035341504.png" alt="相关问题截图"></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>本地仓库在推送到github远端仓库时出现报错如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; git pull --tags origin main</span><br><span class="line">ssh: connect to host github.com port 22: Connection timed out</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>新建<code>~/.ssh/config</code>文件, 写入如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure>
+
+<p>保存后问题解决</p>
+]]></content>
+      <tags>
+        <tag>GIT</tag>
+        <tag>SSH</tag>
+        <tag>报错</tag>
       </tags>
   </entry>
   <entry>
