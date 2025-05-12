@@ -177,13 +177,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -200,6 +200,83 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/13/Keil5%E4%B8%AD%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%96%E8%AE%BE%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="含生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="过隙影">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 过隙影">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/05/13/Keil5%E4%B8%AD%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%96%E8%AE%BE%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Keil5中找不到外设函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-13 02:51:27 / 修改时间：03:00:59" itemprop="dateCreated datePublished" datetime="2025-05-13T02:51:27+08:00">2025-05-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Chuck-Yue/p/10478448.html">stm32f10x_it.c、stm32f10x_it.h和stm32f10x_conf.h文件作用</a></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在编写外设函数中,如果没有包含对应的头文件,而只包换stm32f10x.h文件则会出现索引不到的问题</p>
+<p>如下图所示,在编写定时器相关函数中,注释掉<code>#include &quot;stm32f10x_tim.h&quot;</code>则会出现编译错误</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025408755.png" alt="编写定时器相关函数案例"></p>
+<p>报错信息如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025634242.png" alt="报错信息"></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>引用<code>stm32f10x_conf.h</code>文件,并在该文件中添加需要的外设函数头文件,如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025827711.png" alt="stm32f10x_conf.h"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

@@ -287,4 +287,22 @@
         <tag>博客</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Keil5中找不到外设函数</title>
+    <url>/2025/05/13/Keil5%E4%B8%AD%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%96%E8%AE%BE%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://www.cnblogs.com/Chuck-Yue/p/10478448.html">stm32f10x_it.c、stm32f10x_it.h和stm32f10x_conf.h文件作用</a></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在编写外设函数中,如果没有包含对应的头文件,而只包换stm32f10x.h文件则会出现索引不到的问题</p>
+<p>如下图所示,在编写定时器相关函数中,注释掉<code>#include &quot;stm32f10x_tim.h&quot;</code>则会出现编译错误</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025408755.png" alt="编写定时器相关函数案例"></p>
+<p>报错信息如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025634242.png" alt="报错信息"></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>引用<code>stm32f10x_conf.h</code>文件,并在该文件中添加需要的外设函数头文件,如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/See-YouL/PicGoFhotos/master/20250513025827711.png" alt="stm32f10x_conf.h"></p>
+]]></content>
+      <tags>
+        <tag>STM32</tag>
+        <tag>报错</tag>
+        <tag>Keil5</tag>
+      </tags>
+  </entry>
 </search>
